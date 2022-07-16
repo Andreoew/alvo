@@ -41,13 +41,10 @@ button {
 button:hover {
   opacity: 0.8; 
 }
-
-
 #score{
   text-align: center;
   margin: 10px;
 }
-
 p{
   margin: 10px;
 }
