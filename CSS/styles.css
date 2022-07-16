@@ -16,6 +16,9 @@
   width: 1000px;
   height: 100%;
 }
+
+
+
 #container-menu{
   background: #000;
   color: #fff;
@@ -30,7 +33,15 @@ button {
   margin: 5px;
   width: 100px;
   height: 50px;
+  cursor: pointer;
+  background: #8563e3;
+  border-radius: 20px; 
 }
+
+button:hover {
+  opacity: 0.8; 
+}
+
 
 #score{
   text-align: center;
