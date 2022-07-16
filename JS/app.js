@@ -15,7 +15,7 @@ var pincel = tela.getContext('2d');
 // pincel.fillStyle = 'lightgray';
 pincel.fillRect(0, 0, 1000, 600);
 
-var raio = 35;
+var raio = 10;
 var xAleatorio;
 var yAleatorio;
 
