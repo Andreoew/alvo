@@ -4,6 +4,7 @@ const btnStop = document.querySelector('#btn-stop');
 var myScore = document.querySelector('#my-score');
 var machiScore = document.querySelector('#machine-score');
 var btnReset = document.querySelector('#btn-reset');
+// const canvas = document.querySelector('#container-canvas');
 
 let score = 0;
 var scoreMachine = 0;
@@ -14,7 +15,7 @@ var pincel = tela.getContext('2d');
 // pincel.fillStyle = 'lightgray';
 pincel.fillRect(0, 0, 1000, 600);
 
-var raio = 20;
+var raio = 35;
 var xAleatorio;
 var yAleatorio;
 
@@ -23,23 +24,40 @@ buttons.addEventListener('click', function (e) {
     const value = e.target;
 
     if (value === btnInit) {
-        console.log('iniciar');
-        tela.style.display = ''; 
-        machiScore.innerText = scoreMachine;  
-        myScore.innerText = yourScore;
-        btnInit.disabled = true;
-        btnStop.disabled = false;
-        btnInit.opacity = 2;      
+        console.log('iniciar');         
+        startGame();
+        
+        // btnInit.opacity = 2;      
     } else if (value === btnStop) {
-        console.log('Stop');
-        tela.style.display = 'none';
-        btnInit.disabled = false;
-        btnStop.disabled = true;
+        stop();
     }else if (value === btnReset) {
-        console.log('reset clicked');
-        document.location.reload(true);
+        reset();    
+        
     }    
 });
+
+function startGame() {
+    btnInit.disabled = true;
+    btnStop.disabled = false;
+    tela.style.display = '';
+    machiScore.innerText = scoreMachine;  
+    myScore.innerText = yourScore;
+    btnInit.focus = true;
+    // btnStop.disabled = true;
+    btnReset.disabled = true;
+}
+
+function reset() {
+    document.location.reload(true);
+}
+
+function stop(){
+    console.log('Stop');
+    tela.style.display = 'none';
+    btnInit.disabled = false;
+    btnStop.disabled = true;
+    btnReset.disabled = false;
+}
 
 function desenhaCirculo(x, y, raio, cor) {
     pincel.fillStyle = cor;
@@ -69,7 +87,31 @@ function atualizaTela() {
     desenhaAlvo(xAleatorio, yAleatorio);
 }
 
+function gameOver(){
+    let gameOverLayer = document.getElementById("gameOver");
+        gameOverLayer.style.display = 'flex';
+}
 
+function checkGameOver(){
+    if(scoreMachine >= 3){
+        scoreMachine;
+        console.log('winner maquina');
+        tela.style.display = 'none';
+        gameOver()
+    }else if(yourScore >= 3){
+        yourScore;
+        console.log('winner eu');
+        tela.style.display = 'none';
+        gameOver();
+    }
+}
+
+function restart() {
+    startGame();
+    reset();
+    let gameOverLayer = document.getElementById("gameOver");
+    gameOverLayer.style.display = 'none';
+}
 
 setInterval(atualizaTela, 1000);
 
@@ -84,19 +126,13 @@ function dispara(evento) {
         desenhaCirculo(x, y, raio + 200, 'red');
         yourScore++;
         myScore.innerText = yourScore;
+        checkGameOver();
 
         console.log('meus pontos', yourScore);
     } else {
         scoreMachine++;
         machiScore.innerText = scoreMachine;
-        if(scoreMachine >= 3){
-            // var divNova = document.createElement('div');
-            // var vendedor = document.createTextNode(`O vencedor é o oponente com  ${scoreMachine} pontos`)
-            // divNova.appendChild(vendedor);
-
-            // var divAtual = document.getElementById('canvas');
-            // document.body.insertBefore(divNova, divAtual);
-        }
+        checkGameOver();        
     }
 
 }
