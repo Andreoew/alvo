@@ -27,14 +27,9 @@ buttons.addEventListener('click', function (e) {
         tela.style.display = ''; 
         machiScore.innerText = scoreMachine;  
         myScore.innerText = yourScore;
-        // btnInit.style.background = '#00ff11';
         btnInit.disabled = true;
         btnStop.disabled = false;
         btnInit.opacity = 2;      
-
-        // console.log('meus pontos', yourScore);
-        // console.log('maquina', scoreMachine);
-
     } else if (value === btnStop) {
         console.log('Stop');
         tela.style.display = 'none';
@@ -43,9 +38,7 @@ buttons.addEventListener('click', function (e) {
     }else if (value === btnReset) {
         console.log('reset clicked');
         document.location.reload(true);
-    }
-
-    
+    }    
 });
 
 function desenhaCirculo(x, y, raio, cor) {
@@ -97,12 +90,12 @@ function dispara(evento) {
         scoreMachine++;
         machiScore.innerText = scoreMachine;
         if(scoreMachine >= 3){
-            var divNova = document.createElement('div');
-            var vendedor = document.createTextNode(`O vencedor é o oponente com  ${scoreMachine} pontos`)
-            divNova.appendChild(vendedor);
+            // var divNova = document.createElement('div');
+            // var vendedor = document.createTextNode(`O vencedor é o oponente com  ${scoreMachine} pontos`)
+            // divNova.appendChild(vendedor);
 
-            var divAtual = document.getElementById('canvas');
-            document.body.insertBefore(divNova, divAtual);
+            // var divAtual = document.getElementById('canvas');
+            // document.body.insertBefore(divNova, divAtual);
         }
     }
 
