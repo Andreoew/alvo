@@ -1,0 +1,42 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#container{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 1366px;
+  height: 617px;
+}
+
+#container-canvas{
+  background: lightgray;
+  width: 1000px;
+  height: 100%;
+}
+#container-menu{
+  background: #000;
+  color: #fff;
+}
+#buttons {
+  display: grid;
+  justify-content: center;  
+  
+}
+
+button {
+  margin: 5px;
+  width: 100px;
+  height: 50px;
+}
+
+#score{
+  text-align: center;
+  margin: 10px;
+}
+
+p{
+  margin: 10px;
+}
